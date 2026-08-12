@@ -70,7 +70,7 @@
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
 
-        /* --- Nút tài khoản (Đã sửa lỗi mất nút khi di chuột) --- */
+        /* --- Nút tài khoản (Đã sửa thành BẤM VÀO MỚI HIỆN, không dùng di chuột nữa) --- */
         .user-menu-wrapper { position: relative; display: inline-block; }
         .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
         .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
@@ -78,9 +78,9 @@
         .user-dropdown { 
             display: none; 
             position: absolute; 
-            top: 100%; /* Nằm ngay dưới nút */
+            top: 100%; 
             right: 0; 
-            margin-top: 12px; /* 🔥 Tăng khoảng cách để chuột không bị lọt vào khoảng trống */
+            margin-top: 8px;
             background: rgba(13, 15, 26, 0.95); 
             backdrop-filter: blur(15px); 
             border: 1px solid rgba(255,255,255,0.1); 
@@ -91,22 +91,7 @@
             z-index: 20; 
             animation: popIn 0.2s ease;
         }
-        /* 🔥 Quan trọng: Tạo một vùng đệm ảo để nối liền giữa tên và hộp menu */
-        .user-dropdown::before {
-            content: "";
-            position: absolute;
-            top: -12px;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: transparent;
-        }
-
-        /* Hiện menu khi rê chuột vào tên hoặc bấm vào tên */
-        .user-menu-wrapper:hover .user-dropdown,
-        .user-menu-wrapper.active .user-dropdown {
-            display: block;
-        }
+        .user-dropdown.open { display: block; }
         .user-dropdown button { 
             width: 100%; 
             background: none; 
@@ -260,7 +245,7 @@
                 <!-- Khi chưa đăng nhập -->
                 <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703; display: flex;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 
-                <!-- Khi đã đăng nhập (Đã sửa lỗi mất nút khi di chuột) -->
+                <!-- Khi đã đăng nhập (Đã đổi sang BẤM VÀO MỚI HIỆN) -->
                 <div class="user-menu-wrapper" id="userMenuWrapper" style="display: none;">
                     <button class="user-btn" onclick="toggleUserDropdown()">
                         <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Tài khoản</span>
@@ -382,7 +367,6 @@
         const googleProvider = new GoogleAuthProvider();
         const facebookProvider = new FacebookAuthProvider();
 
-        // QUAN TRỌNG: Bắt buộc chọn tài khoản mỗi lần đăng nhập
         googleProvider.setCustomParameters({ prompt: 'select_account' });
 
         function updateUI(user) {
@@ -467,8 +451,18 @@
         };
 
         window.toggleUserDropdown = function() {
-            document.getElementById('userDropdown').classList.toggle('open');
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('open');
         };
+
+        // Đóng menu khi bấm ra ngoài (Click outside)
+        document.addEventListener('click', function(e) {
+            const wrapper = document.getElementById('userMenuWrapper');
+            const dropdown = document.getElementById('userDropdown');
+            if (wrapper && dropdown.classList.contains('open') && !wrapper.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
 
         onAuthStateChanged(auth, (user) => {
             if (user) {

@@ -74,38 +74,10 @@
         .user-menu-wrapper { position: relative; display: inline-block; }
         .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
         .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
-        .user-dropdown { 
-            display: none; 
-            position: absolute; 
-            top: 100%; 
-            right: 0; 
-            margin-top: 8px;
-            background: rgba(13, 15, 26, 0.95); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 16px; 
-            padding: 8px 0; 
-            min-width: 160px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
-            z-index: 20; 
-            animation: popIn 0.2s ease;
-        }
+        .user-dropdown { display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 8px 0; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 20; animation: popIn 0.2s ease; }
         .user-dropdown.open { display: block; }
-        .user-dropdown button { 
-            width: 100%; 
-            background: none; 
-            border: none; 
-            color: #fff; 
-            padding: 10px 20px; 
-            font-size: 14px; 
-            text-align: left; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-        }
-        .user-dropdown button:hover { background: rgba(255,255,255,0.05); }
+        .user-dropdown button { width: 100%; background: none; border: none; color: #fff; padding: 10px 20px; font-size: 14px; text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
+        .user-dropdown button:hover { background: rgba(255,255,255,0.05); color: #f97316; }
 
         /* --- Landing Hero --- */
         #landingHero { width: 100%; border-radius: 30px; padding: 60px 30px; text-align: center; position: relative; overflow: hidden; background: rgba(18, 22, 40, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
@@ -151,26 +123,21 @@
         .menu-card.game { color: #f97316; border-color: rgba(249, 115, 22, 0.3); box-shadow: 0 0 20px rgba(249, 115, 22, 0.05); }
         .menu-card.game:hover { transform: translateY(-8px) scale(1.02); border-color: #f97316; box-shadow: 0 0 40px rgba(249, 115, 22, 0.4); background: rgba(249, 115, 22, 0.05); }
 
-        /* --- Chat --- */
+        /* --- Chat & Room --- */
         #pageChat { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
-        .chat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(255,255,255,0.02); padding: 12px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 10px; }
+        #pageRoom { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
+        .chat-header, .room-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(255,255,255,0.02); padding: 12px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 10px; }
         .chat-header h2 { font-family: 'Orbitron', sans-serif; color: #ffb703; font-size: 22px; text-shadow: 0 0 20px rgba(255, 183, 3, 0.2); display: flex; align-items: center; gap: 10px; }
-        .chat-back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #b0b8d1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 15px; }
+        .room-header h2 { font-family: 'Orbitron', sans-serif; color: #f97316; font-size: 22px; text-shadow: 0 0 20px rgba(249, 115, 22, 0.2); display: flex; align-items: center; gap: 10px; }
+        .chat-back-btn, .room-back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #b0b8d1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 15px; }
         .chat-back-btn:hover { background: #ffb703; color: #07080e; border-color: #ffb703; transform: scale(1.05); }
-        .chat-container { background: rgba(255, 255, 255, 0.03); border-radius: 24px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); min-height: 300px; display: flex; flex-direction: column; }
+        .room-back-btn:hover { background: #f97316; color: #07080e; border-color: #f97316; transform: scale(1.05); }
+        .chat-container, .room-container { background: rgba(255, 255, 255, 0.03); border-radius: 24px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
         .chat-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; color: #55607a; text-align: center; gap: 15px; padding: 30px 0; }
         .chat-placeholder i { font-size: 50px; color: rgba(255, 183, 3, 0.2); }
         .chat-demo-box { margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
         .chat-demo-box textarea { width: 100%; height: 60px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; padding: 15px; font-size: 15px; outline: none; resize: none; font-family: 'Roboto', sans-serif; }
         .chat-demo-box textarea:focus { border-color: #ffb703; }
-
-        /* --- Room --- */
-        #pageRoom { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
-        .room-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(255,255,255,0.02); padding: 12px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 10px; }
-        .room-header h2 { font-family: 'Orbitron', sans-serif; color: #f97316; font-size: 22px; text-shadow: 0 0 20px rgba(249, 115, 22, 0.2); display: flex; align-items: center; gap: 10px; }
-        .room-back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #b0b8d1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 15px; }
-        .room-back-btn:hover { background: #f97316; color: #07080e; border-color: #f97316; transform: scale(1.05); }
-        .room-container { background: rgba(255, 255, 255, 0.03); border-radius: 24px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
         .room-form { display: flex; flex-direction: column; gap: 15px; }
         .room-form input { width: 100%; padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 16px; outline: none; transition: 0.3s; }
         .room-form input:focus { border-color: #f97316; background: rgba(249, 115, 22, 0.05); }
@@ -189,30 +156,6 @@
         .history-item .h-code { color: #f97316; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 15px; }
         .history-item:nth-child(even) { border-left-color: #3b82f6; }
         .history-item:nth-child(even) .h-code { color: #3b82f6; }
-
-        /* --- Popup đặt tên (Name Setup) --- */
-        .setup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease; z-index: 1000; }
-        .setup-overlay.active { visibility: visible; opacity: 1; }
-        .setup-popup { background: #1b1f33; padding: 40px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; position: relative; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: scale(0.8) translateY(30px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .setup-overlay.active .setup-popup { transform: scale(1) translateY(0); }
-        .setup-popup h2 { font-family: 'Orbitron', sans-serif; font-size: 22px; margin-bottom: 10px; color: #ffb703; }
-        .setup-popup p { color: #8892b0; font-size: 14px; margin-bottom: 25px; }
-        .setup-input { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 15px; outline: none; transition: 0.3s; margin-bottom: 20px; }
-        .setup-input:focus { border-color: #ffb703; background: rgba(255, 183, 3, 0.05); }
-        .setup-btn { width: 100%; padding: 12px; border-radius: 12px; border: none; background: linear-gradient(135deg, #ff9e5e, #ffb703); color: #0d0f1a; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; }
-        .setup-btn:hover { transform: scale(1.02); }
-
-        /* --- Popup sửa Profile --- */
-        .profile-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease; z-index: 1000; }
-        .profile-overlay.active { visibility: visible; opacity: 1; }
-        .profile-popup { background: #1b1f33; padding: 40px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; position: relative; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: scale(0.8) translateY(30px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .profile-overlay.active .profile-popup { transform: scale(1) translateY(0); }
-        .profile-popup h2 { font-family: 'Orbitron', sans-serif; font-size: 22px; margin-bottom: 10px; color: #f97316; }
-        .profile-popup p { color: #8892b0; font-size: 14px; margin-bottom: 25px; }
-        .profile-input { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 15px; outline: none; transition: 0.3s; margin-bottom: 20px; }
-        .profile-input:focus { border-color: #f97316; background: rgba(249, 115, 22, 0.05); }
-        .profile-btn { width: 100%; padding: 12px; border-radius: 12px; border: none; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; }
-        .profile-btn:hover { transform: scale(1.02); }
 
         /* --- Login Popup --- */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease; z-index: 999; }
@@ -273,7 +216,6 @@
             .room-form button { padding: 14px; font-size: 15px; }
             #roomHistory { max-height: 200px; }
             .login-popup { padding: 30px 20px; }
-            .setup-popup, .profile-popup { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -300,14 +242,13 @@
                 <!-- Chưa đăng nhập -->
                 <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703; display: flex;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 
-                <!-- Đã đăng nhập (Bấm vào tên để hiện profile) -->
+                <!-- Đã đăng nhập -->
                 <div class="user-menu-wrapper" id="userMenuWrapper" style="display: none;">
                     <button class="user-btn" onclick="toggleUserDropdown()">
                         <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Tài khoản</span>
                         <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                     </button>
                     <div class="user-dropdown" id="userDropdown">
-                        <button onclick="openProfilePopup()"><i class="fas fa-user-edit" style="color: #ffb703;"></i> Chỉnh sửa Hồ sơ</button>
                         <button onclick="logoutUser()"><i class="fas fa-sign-out-alt" style="color: #f97316;"></i> Đăng xuất</button>
                     </div>
                 </div>
@@ -370,29 +311,7 @@
         </div>
     </div>
 
-    <!-- ==================== POPUP ĐẶT TÊN LẦN ĐẦU ==================== -->
-    <div class="setup-overlay" id="setupOverlay">
-        <div class="setup-popup">
-            <div style="font-size: 50px; color: #ffb703; margin-bottom: 15px;"><i class="fas fa-ghost"></i></div>
-            <h2>Đặt tên trong game</h2>
-            <p>Nhập tên bạn muốn hiển thị khi chat và trong danh sách thành viên.</p>
-            <input type="text" class="setup-input" id="setupNameInput" placeholder="Ví dụ: Cường Đình, CoolGamer..." maxlength="20">
-            <button class="setup-btn" onclick="saveSetupName()"><i class="fas fa-check"></i> Lưu tên</button>
-        </div>
-    </div>
-
-    <!-- ==================== POPUP CHỈNH SỬA PROFILE ==================== -->
-    <div class="profile-overlay" id="profileOverlay">
-        <div class="profile-popup">
-            <div style="font-size: 40px; color: #f97316; margin-bottom: 15px;"><i class="fas fa-user-edit"></i></div>
-            <h2>Chỉnh sửa Hồ sơ</h2>
-            <p>Thay đổi tên hiển thị của bạn trên hệ thống.</p>
-            <input type="text" class="profile-input" id="profileNameInput" placeholder="Tên mới của bạn..." maxlength="20">
-            <button class="profile-btn" onclick="saveProfileName()"><i class="fas fa-save"></i> Lưu thay đổi</button>
-        </div>
-    </div>
-
-    <!-- ==================== LOGIN POPUP ==================== -->
+    <!-- LOGIN POPUP -->
     <div class="overlay" id="loginOverlay">
         <div class="login-popup">
             <button class="close-popup" onclick="closeLoginPopup()"><i class="fas fa-times"></i></button>
@@ -400,23 +319,27 @@
             <h2 id="popupTitle">Đăng nhập</h2>
             <p id="popupDesc">Tham gia cộng đồng Goose Goose Duck ngay!</p>
             
+            <!-- Social Buttons -->
             <button class="social-btn google" id="googleBtn" onclick="loginGoogle()"><i class="fab fa-google" style="color:#ea4335; font-size:20px;"></i> Đăng nhập với Google</button>
             <button class="social-btn facebook" id="fbBtn" onclick="loginFacebook()"><i class="fab fa-facebook-f"></i> Đăng nhập với Facebook</button>
             
             <div class="or-divider">Hoặc</div>
 
+            <!-- Email Login Form -->
             <div class="email-login-form" id="emailLoginForm">
                 <input type="email" class="email-input" id="loginEmail" placeholder="Email của bạn...">
                 <input type="password" class="email-input" id="loginPass" placeholder="Mật khẩu...">
                 <button class="email-submit-btn" onclick="loginEmail()">Đăng nhập với Email</button>
             </div>
 
+            <!-- Email Register Form -->
             <div class="email-register-form" id="emailRegisterForm">
                 <input type="email" class="email-input" id="regEmail" placeholder="Email của bạn...">
                 <input type="password" class="email-input" id="regPass" placeholder="Mật khẩu (6 ký tự trở lên)...">
                 <button class="email-submit-btn" onclick="registerEmail()">Đăng ký tài khoản</button>
             </div>
 
+            <!-- Toggle Links -->
             <div style="margin-top:15px; font-size:14px; color:#8892b0;">
                 <span id="toggleText">Chưa có tài khoản? </span>
                 <a href="#" class="email-toggle" id="toggleLink" onclick="toggleAuthForm(event)">Đăng ký ngay</a>
@@ -427,8 +350,7 @@
     <!-- ==================== FIREBASE & LOGIC ==================== -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+        import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyA4bKk3jqWn-SkVoF3r2dcDl8C-yOka35U",
@@ -442,39 +364,26 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
         const facebookProvider = new FacebookAuthProvider();
+
         googleProvider.setCustomParameters({ prompt: 'select_account' });
 
+        // --- Biến toàn cục lưu trạng thái đăng nhập ---
         window.isLoggedIn = false;
-        let currentDisplayName = '';
 
-        // --- Hàm cập nhật giao diện ---
         function updateUI(user) {
             window.isLoggedIn = true;
             document.getElementById('landingHero').style.display = 'none';
             document.getElementById('mainMenu').style.display = 'flex';
             document.getElementById('authBtn').style.display = 'none';
-            
             const userWrapper = document.getElementById('userMenuWrapper');
             userWrapper.style.display = 'inline-block';
-            
-            // Lấy tên từ Database, nếu chưa có thì dùng email
-            const userRef = doc(db, 'users', user.uid);
-            getDoc(userRef).then((docSnap) => {
-                if (docSnap.exists() && docSnap.data().displayName) {
-                    currentDisplayName = docSnap.data().displayName;
-                } else {
-                    currentDisplayName = user.displayName || user.email.split('@')[0];
-                }
-                document.getElementById('userNameDisplay').innerText = currentDisplayName;
-            });
+            document.getElementById('userNameDisplay').innerText = user.displayName || user.email;
             
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.innerHTML = `
                 <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
-                <a href="#" onclick="toggleMobileMenu(); openProfilePopup();"><i class="fas fa-user-edit" style="color:#ffb703;"></i> Sửa Hồ sơ</a>
                 <a href="#" onclick="toggleMobileMenu(); logoutUser();"><i class="fas fa-sign-out-alt" style="color:#f97316;"></i> Đăng xuất</a>
             `;
         }
@@ -487,7 +396,6 @@
             document.getElementById('pageRoom').style.display = 'none';
             document.getElementById('authBtn').style.display = 'flex';
             document.getElementById('userMenuWrapper').style.display = 'none';
-            
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.innerHTML = `
                 <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
@@ -495,82 +403,26 @@
             `;
         }
 
-        // --- Hàm đặt tên lần đầu (Sau khi đăng ký/đăng nhập lần 1) ---
-        window.saveSetupName = async function() {
-            const name = document.getElementById('setupNameInput').value.trim();
-            if (!name) { alert('Vui lòng nhập tên của bạn!'); return; }
-            
-            const user = auth.currentUser;
-            if (user) {
-                try {
-                    // Lưu vào Firestore
-                    await setDoc(doc(db, 'users', user.uid), { displayName: name }, { merge: true });
-                    // Cập nhật hiển thị
-                    document.getElementById('setupOverlay').classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    document.getElementById('userNameDisplay').innerText = name;
-                    currentDisplayName = name;
-                    // Chuyển sang menu chính
-                    const hero = document.getElementById('landingHero');
-                    hero.style.display = 'none';
-                    document.getElementById('mainMenu').style.display = 'flex';
-                } catch (error) {
-                    alert('Lỗi lưu tên: ' + error.message);
-                }
-            }
-        };
-
-        // --- Hàm mở popup sửa Profile ---
-        window.openProfilePopup = function() {
-            document.getElementById('userDropdown').classList.remove('open'); // Đóng menu dropdown
-            document.getElementById('profileNameInput').value = currentDisplayName;
-            document.getElementById('profileOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        };
-
-        window.saveProfileName = async function() {
-            const newName = document.getElementById('profileNameInput').value.trim();
-            if (!newName) { alert('Vui lòng nhập tên mới!'); return; }
-            
-            const user = auth.currentUser;
-            if (user) {
-                try {
-                    await updateDoc(doc(db, 'users', user.uid), { displayName: newName });
-                    document.getElementById('userNameDisplay').innerText = newName;
-                    currentDisplayName = newName;
-                    document.getElementById('profileOverlay').classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    alert('✅ Đã cập nhật tên hiển thị thành công!');
-                } catch (error) {
-                    alert('Lỗi cập nhật tên: ' + error.message);
-                }
-            }
-        };
-
-        // --- Hàm đăng nhập Google/Facebook ---
         window.loginGoogle = async function() {
-            const btn = document.getElementById('googleBtn'); btn.disabled = true; btn.innerHTML = 'Đang xử lý...';
+            const btn = document.getElementById('googleBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
             try {
-                const result = await signInWithPopup(auth, googleProvider);
+                await signInWithPopup(auth, googleProvider);
                 closeLoginPopup();
-                await checkAndSetupUser(result.user);
             } catch (error) {
-                if(error.code !== 'auth/popup-closed-by-user') alert("Lỗi: " + error.message);
+                alert("Lỗi đăng nhập Google: " + error.message);
             } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-google" style="color:#ea4335; font-size:20px;"></i> Đăng nhập với Google'; }
         };
 
         window.loginFacebook = async function() {
-            const btn = document.getElementById('fbBtn'); btn.disabled = true; btn.innerHTML = 'Đang xử lý...';
+            const btn = document.getElementById('fbBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
             try {
-                const result = await signInWithPopup(auth, facebookProvider);
+                await signInWithPopup(auth, facebookProvider);
                 closeLoginPopup();
-                await checkAndSetupUser(result.user);
             } catch (error) {
-                if(error.code !== 'auth/popup-closed-by-user') alert("Lỗi: " + error.message);
+                alert("Lỗi đăng nhập Facebook: " + error.message);
             } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-facebook-f"></i> Đăng nhập với Facebook'; }
         };
 
-        // --- Hàm đăng nhập/đăng ký Email ---
         window.loginEmail = async function() {
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPass').value.trim();
@@ -578,7 +430,9 @@
             try {
                 await signInWithEmailAndPassword(auth, email, pass);
                 closeLoginPopup();
-            } catch (error) { alert("Đăng nhập thất bại: " + error.message); }
+            } catch (error) {
+                alert("Đăng nhập email thất bại: " + error.message);
+            }
         };
 
         window.registerEmail = async function() {
@@ -587,29 +441,13 @@
             if(!email || !pass) { alert('Vui lòng nhập email và mật khẩu!'); return; }
             if(pass.length < 6) { alert('Mật khẩu phải có ít nhất 6 ký tự!'); return; }
             try {
-                const result = await createUserWithEmailAndPassword(auth, email, pass);
+                await createUserWithEmailAndPassword(auth, email, pass);
                 closeLoginPopup();
-                await checkAndSetupUser(result.user);
-            } catch (error) { alert("Đăng ký thất bại: " + error.message); }
+            } catch (error) {
+                alert("Đăng ký thất bại: " + error.message);
+            }
         };
 
-        // --- Kiểm tra user mới ---
-        async function checkAndSetupUser(user) {
-            const userRef = doc(db, 'users', user.uid);
-            const docSnap = await getDoc(userRef);
-            if (!docSnap.exists()) {
-                // User mới: Hiện popup đặt tên
-                document.getElementById('setupOverlay').classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                // User cũ: Vào thẳng menu
-                const hero = document.getElementById('landingHero');
-                hero.style.display = 'none';
-                document.getElementById('mainMenu').style.display = 'flex';
-            }
-        }
-
-        // --- Đăng xuất ---
         window.logoutUser = async function() {
             if(confirm('Bạn có chắc chắn muốn đăng xuất?')) {
                 await signOut(auth);
@@ -617,10 +455,12 @@
             }
         };
 
-        // --- Dropdown ---
         window.toggleUserDropdown = function() {
-            document.getElementById('userDropdown').classList.toggle('open');
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('open');
         };
+
+        // Đóng menu khi bấm ra ngoài
         document.addEventListener('click', function(e) {
             const wrapper = document.getElementById('userMenuWrapper');
             const dropdown = document.getElementById('userDropdown');
@@ -629,20 +469,9 @@
             }
         });
 
-        // --- Theo dõi trạng thái ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                const userRef = doc(db, 'users', user.uid);
-                getDoc(userRef).then((docSnap) => {
-                    if (docSnap.exists()) {
-                        updateUI(user);
-                    } else {
-                        // Chưa có dữ liệu user -> Đang ở bước đăng ký, chờ đặt tên
-                        document.getElementById('landingHero').style.display = 'none';
-                        document.getElementById('setupOverlay').classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
+                updateUI(user);
             } else {
                 updateGuestUI();
             }
@@ -670,13 +499,28 @@
             isLogin = !isLogin;
             const loginForm = document.getElementById('emailLoginForm');
             const regForm = document.getElementById('emailRegisterForm');
-            document.getElementById('popupTitle').innerText = isLogin ? 'Đăng nhập' : 'Đăng ký tài khoản';
-            document.getElementById('popupDesc').innerText = isLogin ? 'Chào mừng bạn quay trở lại!' : 'Tạo tài khoản để tham gia nhóm!';
-            document.getElementById('toggleText').innerText = isLogin ? 'Chưa có tài khoản? ' : 'Đã có tài khoản? ';
-            document.getElementById('toggleLink').innerText = isLogin ? 'Đăng ký ngay' : 'Đăng nhập ngay';
-            loginForm.style.display = isLogin ? 'flex' : 'none';
-            regForm.style.display = isLogin ? 'none' : 'flex';
+            const title = document.getElementById('popupTitle');
+            const desc = document.getElementById('popupDesc');
+            const toggleText = document.getElementById('toggleText');
+            const toggleLink = document.getElementById('toggleLink');
+
+            if(isLogin) {
+                loginForm.style.display = 'flex';
+                regForm.style.display = 'none';
+                title.innerText = 'Đăng nhập';
+                desc.innerText = 'Chào mừng bạn quay trở lại!';
+                toggleText.innerText = 'Chưa có tài khoản? ';
+                toggleLink.innerText = 'Đăng ký ngay';
+            } else {
+                loginForm.style.display = 'none';
+                regForm.style.display = 'flex';
+                title.innerText = 'Đăng ký tài khoản';
+                desc.innerText = 'Tạo tài khoản để tham gia nhóm!';
+                toggleText.innerText = 'Đã có tài khoản? ';
+                toggleLink.innerText = 'Đăng nhập ngay';
+            }
         };
+        document.getElementById('emailLoginForm').style.display = 'flex';
 
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
@@ -738,8 +582,10 @@
             document.getElementById('roomCode').value = '';
         }
 
+        // --- Hàm xử lý khi bấm nút Tham Gia Ngay (Đã sửa lỗi) ---
         window.handleJoinNow = function() {
             if (window.isLoggedIn === true) {
+                // Nếu đã đăng nhập => Ẩn Banner, hiện Menu
                 const hero = document.getElementById('landingHero');
                 hero.style.opacity = '0';
                 hero.style.transform = 'scale(0.95)';
@@ -748,6 +594,7 @@
                     document.getElementById('mainMenu').style.display = 'flex';
                 }, 400);
             } else {
+                // Nếu chưa đăng nhập => Bật popup
                 openLoginPopup();
             }
         };

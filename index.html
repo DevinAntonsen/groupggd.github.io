@@ -70,13 +70,46 @@
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
 
-        /* --- Nút tài khoản (Bấm vào sẽ hiện menu đăng xuất) --- */
+        /* --- Nút tài khoản (Khi rê chuột vào sẽ hiện nút đăng xuất) --- */
         .user-menu-wrapper { position: relative; display: inline-block; }
-        .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 20px; transition: 0.3s; }
+        .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
         .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
-        .user-dropdown { display: none; position: absolute; top: 45px; right: 0; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 8px 0; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 20; }
-        .user-dropdown.open { display: block; }
-        .user-dropdown button { width: 100%; background: none; border: none; color: #fff; padding: 10px 20px; font-size: 14px; text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
+        
+        /* Menu Đăng xuất */
+        .user-dropdown { 
+            display: none; 
+            position: absolute; 
+            top: 45px; 
+            right: 0; 
+            background: rgba(13, 15, 26, 0.95); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 16px; 
+            padding: 8px 0; 
+            min-width: 140px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
+            z-index: 20; 
+            animation: popIn 0.2s ease;
+        }
+        /* Hiện menu khi rê chuột vào tên hoặc bấm vào tên */
+        .user-menu-wrapper:hover .user-dropdown,
+        .user-menu-wrapper.active .user-dropdown {
+            display: block;
+        }
+        .user-dropdown button { 
+            width: 100%; 
+            background: none; 
+            border: none; 
+            color: #fff; 
+            padding: 10px 20px; 
+            font-size: 14px; 
+            text-align: left; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
         .user-dropdown button:hover { background: rgba(255,255,255,0.05); color: #f97316; }
 
         /* --- Landing Hero (Mặc định cho người chưa đăng nhập) --- */
@@ -219,9 +252,9 @@
                 <!-- Khi chưa đăng nhập -->
                 <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703; display: flex;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 
-                <!-- Khi đã đăng nhập (Ẩn mặc định) -->
+                <!-- Khi đã đăng nhập -->
                 <div class="user-menu-wrapper" id="userMenuWrapper" style="display: none;">
-                    <button class="user-btn" onclick="toggleUserDropdown()">
+                    <button class="user-btn">
                         <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Tài khoản</span>
                         <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                     </button>
@@ -433,11 +466,6 @@
                 await signOut(auth);
                 updateGuestUI();
             }
-        };
-
-        // --- Mở/đóng menu Dropdown ---
-        window.toggleUserDropdown = function() {
-            document.getElementById('userDropdown').classList.toggle('open');
         };
 
         // --- Theo dõi trạng thái đăng nhập (Chống mất khi F5) ---

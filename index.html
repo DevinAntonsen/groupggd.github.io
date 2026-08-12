@@ -70,49 +70,16 @@
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
 
-        /* --- Nút tài khoản (Khi rê chuột vào sẽ hiện nút đăng xuất) --- */
+        /* --- Nút tài khoản --- */
         .user-menu-wrapper { position: relative; display: inline-block; }
         .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
         .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
-        
-        /* Menu Đăng xuất */
-        .user-dropdown { 
-            display: none; 
-            position: absolute; 
-            top: 45px; 
-            right: 0; 
-            background: rgba(13, 15, 26, 0.95); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 16px; 
-            padding: 8px 0; 
-            min-width: 140px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
-            z-index: 20; 
-            animation: popIn 0.2s ease;
-        }
-        /* Hiện menu khi rê chuột vào tên hoặc bấm vào tên */
-        .user-menu-wrapper:hover .user-dropdown,
-        .user-menu-wrapper.active .user-dropdown {
-            display: block;
-        }
-        .user-dropdown button { 
-            width: 100%; 
-            background: none; 
-            border: none; 
-            color: #fff; 
-            padding: 10px 20px; 
-            font-size: 14px; 
-            text-align: left; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-        }
+        .user-dropdown { display: none; position: absolute; top: 45px; right: 0; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 8px 0; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 20; animation: popIn 0.2s ease; }
+        .user-menu-wrapper:hover .user-dropdown, .user-menu-wrapper.active .user-dropdown { display: block; }
+        .user-dropdown button { width: 100%; background: none; border: none; color: #fff; padding: 10px 20px; font-size: 14px; text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
         .user-dropdown button:hover { background: rgba(255,255,255,0.05); color: #f97316; }
 
-        /* --- Landing Hero (Mặc định cho người chưa đăng nhập) --- */
+        /* --- Landing Hero --- */
         #landingHero { width: 100%; border-radius: 30px; padding: 60px 30px; text-align: center; position: relative; overflow: hidden; background: rgba(18, 22, 40, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
         #landingHero::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: linear-gradient(45deg, #ffb703, #f97316, #3b82f6, #ffb703); background-size: 400% 400%; border-radius: 31px; z-index: -1; animation: gradientBorder 6s ease-in-out infinite; filter: blur(2px); }
         @keyframes gradientBorder { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
@@ -120,7 +87,7 @@
         .hero-title span { color: #fff; text-shadow: 0 0 30px rgba(255, 183, 3, 0.6), 0 0 60px rgba(249, 115, 22, 0.4); }
         .hero-desc { color: #a0a8c3; margin-bottom: 30px; font-size: 16px; font-weight: 400; letter-spacing: 1px; position: relative; z-index: 2; }
 
-        /* --- Menu 2 Nút (Hiện khi đã đăng nhập) --- */
+        /* --- Main Menu --- */
         #mainMenu { display: none; width: 100%; justify-content: center; gap: 30px; flex-wrap: wrap; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes popIn { 0% { opacity: 0; transform: scale(0.85) translateY(30px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
         .menu-card { flex: 1; min-width: 280px; max-width: 380px; height: 160px; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 24px; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; border: 2px solid rgba(255,255,255,0.1); background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); gap: 10px; position: relative; }
@@ -131,7 +98,7 @@
         .menu-card.game { color: #f97316; border-color: rgba(249, 115, 22, 0.3); box-shadow: 0 0 20px rgba(249, 115, 22, 0.05); }
         .menu-card.game:hover { transform: translateY(-8px) scale(1.02); border-color: #f97316; box-shadow: 0 0 40px rgba(249, 115, 22, 0.4); background: rgba(249, 115, 22, 0.05); }
 
-        /* --- Trang con --- */
+        /* --- Chat & Room --- */
         #pageChat { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
         #pageRoom { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
         .chat-header, .room-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(255,255,255,0.02); padding: 12px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 10px; }
@@ -140,21 +107,18 @@
         .chat-back-btn, .room-back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #b0b8d1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 15px; }
         .chat-back-btn:hover { background: #ffb703; color: #07080e; border-color: #ffb703; transform: scale(1.05); }
         .room-back-btn:hover { background: #f97316; color: #07080e; border-color: #f97316; transform: scale(1.05); }
-
         .chat-container, .room-container { background: rgba(255, 255, 255, 0.03); border-radius: 24px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
         .chat-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; color: #55607a; text-align: center; gap: 15px; padding: 30px 0; }
         .chat-placeholder i { font-size: 50px; color: rgba(255, 183, 3, 0.2); }
         .chat-demo-box { margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
         .chat-demo-box textarea { width: 100%; height: 60px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; padding: 15px; font-size: 15px; outline: none; resize: none; font-family: 'Roboto', sans-serif; }
         .chat-demo-box textarea:focus { border-color: #ffb703; }
-
         .room-form { display: flex; flex-direction: column; gap: 15px; }
         .room-form input { width: 100%; padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 16px; outline: none; transition: 0.3s; }
         .room-form input:focus { border-color: #f97316; background: rgba(249, 115, 22, 0.05); }
         .room-form button { width: 100%; padding: 16px; border-radius: 16px; border: none; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; font-weight: 900; font-size: 17px; cursor: pointer; transition: 0.3s; letter-spacing: 1px; box-shadow: 0 0 20px rgba(249, 115, 22, 0.2); }
         .room-form button:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(249, 115, 22, 0.5); }
         .room-form button:active { transform: scale(0.98); }
-
         #roomHistory { display: none; margin-top: 25px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 15px; animation: popIn 0.5s; position: relative; max-height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
         #roomHistory::-webkit-scrollbar { width: 6px; }
         #roomHistory::-webkit-scrollbar-track { background: transparent; }
@@ -277,14 +241,14 @@
             <p class="hero-desc">Đăng nhập để cùng nhau giải trí • Kết bạn • Tận hưởng game!</p>
         </section>
 
-        <!-- Main Menu (After login) -->
+        <!-- Main Menu -->
         <div id="mainMenu">
             <div class="menu-card chat" onclick="openChatPage()"><i class="fas fa-comments"></i> Nhóm Chat</div>
             <div class="menu-card game" onclick="openRoomPage()"><i class="fas fa-gamepad"></i> Phòng Game</div>
         </div>
     </div>
 
-    <!-- Page Chat -->
+    <!-- Chat -->
     <div id="pageChat">
         <div class="chat-header">
             <h2><i class="fas fa-comments" style="color: #ffb703;"></i> Nhóm Chat</h2>
@@ -300,7 +264,7 @@
         </div>
     </div>
 
-    <!-- Page Room -->
+    <!-- Room -->
     <div id="pageRoom">
         <div class="room-header">
             <h2><i class="fas fa-gamepad"></i> Phòng Game</h2>
@@ -372,6 +336,11 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+        const facebookProvider = new FacebookAuthProvider();
+
+        // --- QUAN TRỌNG NHẤT: Thêm dòng này để bắt buộc chọn tài khoản mỗi lần đăng nhập ---
+        googleProvider.setCustomParameters({ prompt: 'select_account' });
 
         // --- Hàm cập nhật giao diện khi đã đăng nhập ---
         function updateUI(user) {
@@ -414,8 +383,8 @@
         window.loginGoogle = async function() {
             const btn = document.getElementById('googleBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
             try {
-                const provider = new GoogleAuthProvider();
-                await signInWithPopup(auth, provider);
+                // Sử dụng googleProvider đã cấu hình ở trên
+                await signInWithPopup(auth, googleProvider);
                 closeLoginPopup();
             } catch (error) {
                 alert("Lỗi đăng nhập Google: " + error.message);
@@ -426,8 +395,7 @@
         window.loginFacebook = async function() {
             const btn = document.getElementById('fbBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
             try {
-                const provider = new FacebookAuthProvider();
-                await signInWithPopup(auth, provider);
+                await signInWithPopup(auth, facebookProvider);
                 closeLoginPopup();
             } catch (error) {
                 alert("Lỗi đăng nhập Facebook: " + error.message);

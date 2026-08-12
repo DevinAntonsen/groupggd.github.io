@@ -86,8 +86,8 @@
         .hero-title { font-family: 'Orbitron', sans-serif; font-size: 42px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 2; }
         .hero-title span { color: #fff; text-shadow: 0 0 30px rgba(255, 183, 3, 0.6), 0 0 60px rgba(249, 115, 22, 0.4); }
         .hero-desc { color: #a0a8c3; margin-bottom: 30px; font-size: 16px; font-weight: 400; letter-spacing: 1px; position: relative; z-index: 2; }
-
-        /* Nút Tham gia ngay (Đã thêm lại vĩnh viễn) */
+        
+        /* Nút Tham gia ngay */
         .hero-btn {
             background: linear-gradient(90deg, #f97316, #ffb703);
             border: none;
@@ -107,7 +107,7 @@
             letter-spacing: 1.5px;
             box-shadow: 0 0 30px rgba(255, 183, 3, 0.3);
             transition: all 0.3s ease;
-            margin-top: 10px; /* Thêm khoảng cách với dòng chữ dưới */
+            margin-top: 10px;
         }
         .hero-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 60px rgba(255, 183, 3, 0.7); }
         .hero-btn:active { transform: scale(0.96); }
@@ -261,7 +261,7 @@
             </div>
         </header>
 
-        <!-- Landing Hero (Đã thêm lại nút Tham Gia Ngay) -->
+        <!-- Landing Hero -->
         <section id="landingHero">
             <h1 class="hero-title"><span>Goose Goose Duck</span></h1>
             <p class="hero-desc">Cùng nhau giải trí • Kết bạn • Tận hưởng những trận game vui nhộn!</p>
@@ -369,7 +369,11 @@
 
         googleProvider.setCustomParameters({ prompt: 'select_account' });
 
+        // --- Biến toàn cục lưu trạng thái đăng nhập ---
+        window.isLoggedIn = false;
+
         function updateUI(user) {
+            window.isLoggedIn = true;
             document.getElementById('landingHero').style.display = 'none';
             document.getElementById('mainMenu').style.display = 'flex';
             document.getElementById('authBtn').style.display = 'none';
@@ -385,6 +389,7 @@
         }
 
         function updateGuestUI() {
+            window.isLoggedIn = false;
             document.getElementById('landingHero').style.display = 'block';
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('pageChat').style.display = 'none';
@@ -577,28 +582,22 @@
             document.getElementById('roomCode').value = '';
         }
 
-        // Hàm xử lý khi bấm "Tham Gia Ngay"
+        // --- Hàm xử lý khi bấm nút Tham Gia Ngay (Đã sửa lỗi) ---
         window.handleJoinNow = function() {
-            const user = auth.currentUser;
-            if (user) {
-                // Nếu đã đăng nhập, chuyển sang Menu
-                goToMainMenu();
+            if (window.isLoggedIn === true) {
+                // Nếu đã đăng nhập => Ẩn Banner, hiện Menu
+                const hero = document.getElementById('landingHero');
+                hero.style.opacity = '0';
+                hero.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    hero.style.display = 'none';
+                    document.getElementById('mainMenu').style.display = 'flex';
+                }, 400);
             } else {
-                // Nếu chưa đăng nhập, mở Popup
+                // Nếu chưa đăng nhập => Bật popup
                 openLoginPopup();
             }
         };
-
-        // Hàm bổ trợ chuyển sang Menu chính
-        function goToMainMenu() {
-            const hero = document.getElementById('landingHero');
-            hero.style.opacity = '0';
-            hero.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                hero.style.display = 'none';
-                document.getElementById('mainMenu').style.display = 'flex';
-            }, 400);
-        }
     </script>
 
 </body>

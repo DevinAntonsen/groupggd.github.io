@@ -70,42 +70,13 @@
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
 
-        /* --- Nút tài khoản (Đã sửa thành BẤM VÀO MỚI HIỆN, không dùng di chuột nữa) --- */
+        /* --- Nút tài khoản (Bấm vào mới hiện) --- */
         .user-menu-wrapper { position: relative; display: inline-block; }
         .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
         .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
-        
-        .user-dropdown { 
-            display: none; 
-            position: absolute; 
-            top: 100%; 
-            right: 0; 
-            margin-top: 8px;
-            background: rgba(13, 15, 26, 0.95); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 16px; 
-            padding: 8px 0; 
-            min-width: 140px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
-            z-index: 20; 
-            animation: popIn 0.2s ease;
-        }
+        .user-dropdown { display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 8px 0; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 20; animation: popIn 0.2s ease; }
         .user-dropdown.open { display: block; }
-        .user-dropdown button { 
-            width: 100%; 
-            background: none; 
-            border: none; 
-            color: #fff; 
-            padding: 10px 20px; 
-            font-size: 14px; 
-            text-align: left; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-        }
+        .user-dropdown button { width: 100%; background: none; border: none; color: #fff; padding: 10px 20px; font-size: 14px; text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
         .user-dropdown button:hover { background: rgba(255,255,255,0.05); color: #f97316; }
 
         /* --- Landing Hero --- */
@@ -115,6 +86,30 @@
         .hero-title { font-family: 'Orbitron', sans-serif; font-size: 42px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 2; }
         .hero-title span { color: #fff; text-shadow: 0 0 30px rgba(255, 183, 3, 0.6), 0 0 60px rgba(249, 115, 22, 0.4); }
         .hero-desc { color: #a0a8c3; margin-bottom: 30px; font-size: 16px; font-weight: 400; letter-spacing: 1px; position: relative; z-index: 2; }
+        
+        /* Nút Tham gia ngay (Đã thêm lại) */
+        .hero-btn {
+            background: linear-gradient(90deg, #f97316, #ffb703);
+            border: none;
+            padding: 16px 50px;
+            border-radius: 50px;
+            color: #0d0f1a;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 30px rgba(255, 183, 3, 0.3);
+            transition: all 0.3s ease;
+        }
+        .hero-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 60px rgba(255, 183, 3, 0.7); }
+        .hero-btn:active { transform: scale(0.96); }
 
         /* --- Main Menu --- */
         #mainMenu { display: none; width: 100%; justify-content: center; gap: 30px; flex-wrap: wrap; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -208,6 +203,7 @@
             #landingHero { padding: 40px 20px; border-radius: 24px; }
             .hero-title { font-size: 28px; }
             .hero-desc { font-size: 14px; margin-bottom: 25px; }
+            .hero-btn { padding: 14px 30px; font-size: 14px; gap: 10px; }
             .menu-card { min-width: 100%; height: 140px; font-size: 20px; }
             .menu-card i { font-size: 28px; }
             #pageChat, #pageRoom { padding: 10px; }
@@ -242,10 +238,10 @@
                 <a href="#" onclick="goHome()"><i class="fas fa-home"></i> Trang Chủ</a>
                 <a href="#" class="hide-mobile"><i class="fas fa-user-friends"></i> Thành Viên</a>
                 
-                <!-- Khi chưa đăng nhập -->
+                <!-- Chưa đăng nhập -->
                 <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703; display: flex;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 
-                <!-- Khi đã đăng nhập (Đã đổi sang BẤM VÀO MỚI HIỆN) -->
+                <!-- Đã đăng nhập -->
                 <div class="user-menu-wrapper" id="userMenuWrapper" style="display: none;">
                     <button class="user-btn" onclick="toggleUserDropdown()">
                         <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Tài khoản</span>
@@ -264,10 +260,13 @@
             </div>
         </header>
 
-        <!-- Landing Hero -->
+        <!-- Landing Hero (Đã thêm nút Tham Gia Ngay) -->
         <section id="landingHero">
             <h1 class="hero-title"><span>Goose Goose Duck</span></h1>
-            <p class="hero-desc">Đăng nhập để cùng nhau giải trí • Kết bạn • Tận hưởng game!</p>
+            <p class="hero-desc">Cùng nhau giải trí • Kết bạn • Tận hưởng những trận game vui nhộn!</p>
+            <button class="hero-btn" onclick="openLoginPopup()">
+                <i class="fas fa-rocket"></i> Tham Gia Ngay
+            </button>
         </section>
 
         <!-- Main Menu -->
@@ -455,7 +454,7 @@
             dropdown.classList.toggle('open');
         };
 
-        // Đóng menu khi bấm ra ngoài (Click outside)
+        // Đóng menu khi bấm ra ngoài
         document.addEventListener('click', function(e) {
             const wrapper = document.getElementById('userMenuWrapper');
             const dropdown = document.getElementById('userDropdown');

@@ -59,9 +59,9 @@
         .logo { display: flex; align-items: center; gap: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 16px; color: #fff; text-transform: uppercase; }
         .logo i { color: #ffb703; font-size: 24px; text-shadow: 0 0 20px rgba(255, 183, 3, 0.6); animation: bounceIcon 3s ease-in-out infinite; flex-shrink: 0; }
         @keyframes bounceIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a, .auth-link { color: #b0b8d1; text-decoration: none; font-weight: 500; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover, .auth-link:hover { color: #ffb703; transform: translateY(-2px); }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: #b0b8d1; text-decoration: none; font-weight: 500; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: #ffb703; transform: translateY(-2px); }
 
         .hamburger { display: none; font-size: 24px; color: #fff; cursor: pointer; background: none; border: none; padding: 5px; }
         .mobile-nav-links { display: none; flex-direction: column; position: absolute; top: 70px; right: 20px; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 15px 0; width: 160px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); z-index: 10; }
@@ -69,6 +69,15 @@
         .mobile-nav-links a { color: #b0b8d1; text-decoration: none; padding: 12px 20px; font-size: 16px; transition: 0.3s; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
+
+        /* --- Nút tài khoản (Bấm vào sẽ hiện menu đăng xuất) --- */
+        .user-menu-wrapper { position: relative; display: inline-block; }
+        .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 20px; transition: 0.3s; }
+        .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
+        .user-dropdown { display: none; position: absolute; top: 45px; right: 0; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 8px 0; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 20; }
+        .user-dropdown.open { display: block; }
+        .user-dropdown button { width: 100%; background: none; border: none; color: #fff; padding: 10px 20px; font-size: 14px; text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
+        .user-dropdown button:hover { background: rgba(255,255,255,0.05); color: #f97316; }
 
         /* --- Landing Hero (Mặc định cho người chưa đăng nhập) --- */
         #landingHero { width: 100%; border-radius: 30px; padding: 60px 30px; text-align: center; position: relative; overflow: hidden; background: rgba(18, 22, 40, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
@@ -136,6 +145,7 @@
         .popup-icon { font-size: 50px; color: #ffcc00; margin-bottom: 15px; text-shadow: 0 0 20px rgba(255, 204, 0, 0.3); }
         .login-popup h2 { font-family: 'Orbitron', sans-serif; font-size: 22px; margin-bottom: 10px; }
         .login-popup p { color: #8892b0; font-size: 14px; margin-bottom: 25px; }
+        
         .social-btn { border: none; width: 100%; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
         .social-btn:hover { transform: scale(1.03); }
         .social-btn.google { background: #ffffff; color: #333; box-shadow: 0 4px 15px rgba(255,255,255,0.1); }
@@ -161,6 +171,7 @@
             .logo { font-size: 15px; }
             .logo i { font-size: 22px; }
             .hero-title { font-size: 34px; }
+            .user-dropdown { right: -10px; }
         }
         @media (max-width: 600px) {
             body { padding-bottom: 40px; }
@@ -204,8 +215,20 @@
             <div class="nav-links">
                 <a href="#" onclick="goHome()"><i class="fas fa-home"></i> Trang Chủ</a>
                 <a href="#" class="hide-mobile"><i class="fas fa-user-friends"></i> Thành Viên</a>
-                <!-- Nút đăng nhập / Tên người dùng -->
-                <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                
+                <!-- Khi chưa đăng nhập -->
+                <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703; display: flex;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                
+                <!-- Khi đã đăng nhập (Ẩn mặc định) -->
+                <div class="user-menu-wrapper" id="userMenuWrapper" style="display: none;">
+                    <button class="user-btn" onclick="toggleUserDropdown()">
+                        <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Tài khoản</span>
+                        <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <button onclick="logoutUser()"><i class="fas fa-sign-out-alt" style="color: #f97316;"></i> Đăng xuất</button>
+                    </div>
+                </div>
             </div>
             <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
             <div class="mobile-nav-links" id="mobileMenu">
@@ -321,15 +344,18 @@
         function updateUI(user) {
             document.getElementById('landingHero').style.display = 'none';
             document.getElementById('mainMenu').style.display = 'flex';
-            const btn = document.getElementById('authBtn');
-            btn.innerHTML = `<i class="fas fa-user-circle"></i> ${user.displayName || user.email}`;
-            btn.onclick = function(e) { e.preventDefault(); logoutUser(); };
+            
+            // Ẩn nút "Đăng nhập", Hiện tên + menu đăng xuất
+            document.getElementById('authBtn').style.display = 'none';
+            const userWrapper = document.getElementById('userMenuWrapper');
+            userWrapper.style.display = 'inline-block';
+            document.getElementById('userNameDisplay').innerText = user.displayName || user.email;
             
             // Cập nhật mobile menu
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.innerHTML = `
                 <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
-                <a href="#" onclick="toggleMobileMenu(); logoutUser();"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                <a href="#" onclick="toggleMobileMenu(); logoutUser();"><i class="fas fa-sign-out-alt" style="color:#f97316;"></i> Đăng xuất</a>
             `;
         }
 
@@ -339,9 +365,10 @@
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('pageChat').style.display = 'none';
             document.getElementById('pageRoom').style.display = 'none';
-            const btn = document.getElementById('authBtn');
-            btn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Đăng nhập`;
-            btn.onclick = function(e) { e.preventDefault(); openLoginPopup(); };
+            
+            // Hiện nút đăng nhập, ẩn menu đăng xuất
+            document.getElementById('authBtn').style.display = 'flex';
+            document.getElementById('userMenuWrapper').style.display = 'none';
 
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.innerHTML = `
@@ -370,7 +397,6 @@
                 await signInWithPopup(auth, provider);
                 closeLoginPopup();
             } catch (error) {
-                // Lưu ý: Nếu chưa tạo App Facebook trên Developer, nó sẽ báo lỗi, bạn vẫn có thể dùng Google.
                 alert("Lỗi đăng nhập Facebook: " + error.message);
             } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-facebook-f"></i> Đăng nhập với Facebook'; }
         };
@@ -409,13 +435,16 @@
             }
         };
 
+        // --- Mở/đóng menu Dropdown ---
+        window.toggleUserDropdown = function() {
+            document.getElementById('userDropdown').classList.toggle('open');
+        };
+
         // --- Theo dõi trạng thái đăng nhập (Chống mất khi F5) ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // Đã đăng nhập, vào giao diện chính
                 updateUI(user);
             } else {
-                // Chưa đăng nhập hoặc đã đăng xuất
                 updateGuestUI();
             }
         });
@@ -433,7 +462,6 @@
             document.getElementById('loginOverlay').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        // Đóng popup khi bấm ra ngoài
         document.getElementById('loginOverlay').addEventListener('click', function(e) {
             if (e.target === this) closeLoginPopup();
         });
@@ -466,7 +494,6 @@
                 toggleLink.innerText = 'Đăng nhập ngay';
             }
         };
-        // Mặc định hiện form login
         document.getElementById('emailLoginForm').style.display = 'flex';
 
         // --- Logic Quản lý Menu Mobile ---

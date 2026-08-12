@@ -9,12 +9,7 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            min-height: 100dvh; 
-        }
-
+        html, body { width: 100%; min-height: 100vh; min-height: 100dvh; }
         body {
             background-color: #07080e;
             color: #ffffff;
@@ -28,29 +23,14 @@
             padding-bottom: env(safe-area-inset-bottom, 20px);
         }
 
-        .bg-particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: floatParticle linear infinite;
-            opacity: 0.3;
-        }
-
+        /* --- Background & Effects --- */
+        .bg-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none; }
+        .particle { position: absolute; background: #ffffff; border-radius: 50%; animation: floatParticle linear infinite; opacity: 0.3; }
         @keyframes floatParticle {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
+            10% { opacity: 0.8; } 90% { opacity: 0.8; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
-
         .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-duration: 12s; animation-delay: 0s; }
         .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-duration: 18s; animation-delay: 2s; background: #f97316; }
         .particle:nth-child(3) { width: 3px; height: 3px; left: 35%; animation-duration: 14s; animation-delay: 5s; }
@@ -59,275 +39,124 @@
         .particle:nth-child(6) { width: 3px; height: 3px; left: 80%; animation-duration: 20s; animation-delay: 3s; background: #ffb703; }
         .particle:nth-child(7) { width: 6px; height: 6px; left: 90%; animation-duration: 15s; animation-delay: 6s; }
 
-        .floating-ducks {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .duck {
-            position: absolute;
-            color: rgba(255, 204, 0, 0.12);
-            font-size: 40px;
-            animation: flyDuck linear infinite;
-        }
-
+        .floating-ducks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .duck { position: absolute; color: rgba(255, 204, 0, 0.12); font-size: 40px; animation: flyDuck linear infinite; }
         @keyframes flyDuck {
             0% { transform: translateY(100vh) translateX(-50px) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            10% { opacity: 1; } 90% { opacity: 1; }
             100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); opacity: 0; }
         }
-
         .duck:nth-child(1) { left: 10%; font-size: 30px; animation-duration: 25s; animation-delay: 0s; }
         .duck:nth-child(2) { left: 25%; font-size: 50px; animation-duration: 35s; animation-delay: 5s; }
         .duck:nth-child(3) { left: 45%; font-size: 25px; animation-duration: 20s; animation-delay: 10s; }
         .duck:nth-child(4) { left: 65%; font-size: 45px; animation-duration: 30s; animation-delay: 15s; }
         .duck:nth-child(5) { left: 85%; font-size: 35px; animation-duration: 28s; animation-delay: 20s; }
 
-        .banner-wrapper {
-            width: 100%;
-            max-width: 1200px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
+        .banner-wrapper { width: 100%; max-width: 1200px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 1; }
 
-        header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 20px;
-            background: rgba(13, 15, 26, 0.8);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 16px;
-            color: #fff;
-            text-transform: uppercase;
-        }
-        .logo i { 
-            color: #ffb703; 
-            font-size: 24px;
-            text-shadow: 0 0 20px rgba(255, 183, 3, 0.6);
-            animation: bounceIcon 3s ease-in-out infinite;
-            flex-shrink: 0;
-        }
+        /* --- Header --- */
+        header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: rgba(13, 15, 26, 0.8); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .logo { display: flex; align-items: center; gap: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 16px; color: #fff; text-transform: uppercase; }
+        .logo i { color: #ffb703; font-size: 24px; text-shadow: 0 0 20px rgba(255, 183, 3, 0.6); animation: bounceIcon 3s ease-in-out infinite; flex-shrink: 0; }
         @keyframes bounceIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
         .nav-links { display: flex; gap: 25px; }
-        .nav-links a {
-            color: #b0b8d1;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .nav-links a:hover { color: #ffb703; transform: translateY(-2px); }
+        .nav-links a, .auth-link { color: #b0b8d1; text-decoration: none; font-weight: 500; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover, .auth-link:hover { color: #ffb703; transform: translateY(-2px); }
 
         .hamburger { display: none; font-size: 24px; color: #fff; cursor: pointer; background: none; border: none; padding: 5px; }
-        .mobile-nav-links {
-            display: none; flex-direction: column; position: absolute; top: 70px; right: 20px;
-            background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 15px 0;
-            width: 160px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); z-index: 10;
-        }
+        .mobile-nav-links { display: none; flex-direction: column; position: absolute; top: 70px; right: 20px; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 15px 0; width: 160px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); z-index: 10; }
         .mobile-nav-links.open { display: flex; }
         .mobile-nav-links a { color: #b0b8d1; text-decoration: none; padding: 12px 20px; font-size: 16px; transition: 0.3s; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
 
-        #landingHero {
-            width: 100%;
-            border-radius: 30px;
-            padding: 60px 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: rgba(18, 22, 40, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-        }
-        #landingHero::before {
-            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #ffb703, #f97316, #3b82f6, #ffb703);
-            background-size: 400% 400%; border-radius: 31px; z-index: -1;
-            animation: gradientBorder 6s ease-in-out infinite; filter: blur(2px);
-        }
+        /* --- Landing Hero (Mặc định cho người chưa đăng nhập) --- */
+        #landingHero { width: 100%; border-radius: 30px; padding: 60px 30px; text-align: center; position: relative; overflow: hidden; background: rgba(18, 22, 40, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+        #landingHero::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: linear-gradient(45deg, #ffb703, #f97316, #3b82f6, #ffb703); background-size: 400% 400%; border-radius: 31px; z-index: -1; animation: gradientBorder 6s ease-in-out infinite; filter: blur(2px); }
         @keyframes gradientBorder { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
         .hero-title { font-family: 'Orbitron', sans-serif; font-size: 42px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 2; }
         .hero-title span { color: #fff; text-shadow: 0 0 30px rgba(255, 183, 3, 0.6), 0 0 60px rgba(249, 115, 22, 0.4); }
-        .hero-desc { color: #a0a8c3; margin-bottom: 35px; font-size: 16px; font-weight: 400; letter-spacing: 1px; position: relative; z-index: 2; }
-        .hero-btn {
-            background: linear-gradient(90deg, #f97316, #ffb703); border: none; padding: 16px 50px;
-            border-radius: 50px; color: #0d0f1a; font-weight: 900; font-size: 16px;
-            cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-            position: relative; z-index: 2; text-transform: uppercase; letter-spacing: 1.5px;
-            box-shadow: 0 0 30px rgba(255, 183, 3, 0.3); transition: all 0.3s ease;
-        }
-        .hero-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 60px rgba(255, 183, 3, 0.7); }
-        .hero-btn:active { transform: scale(0.96); }
+        .hero-desc { color: #a0a8c3; margin-bottom: 30px; font-size: 16px; font-weight: 400; letter-spacing: 1px; position: relative; z-index: 2; }
 
+        /* --- Menu 2 Nút (Hiện khi đã đăng nhập) --- */
         #mainMenu { display: none; width: 100%; justify-content: center; gap: 30px; flex-wrap: wrap; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes popIn { 0% { opacity: 0; transform: scale(0.85) translateY(30px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
-
-        .menu-card {
-            flex: 1; min-width: 280px; max-width: 380px; height: 160px; border-radius: 24px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 24px;
-            text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer; border: 2px solid rgba(255,255,255,0.1);
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); gap: 10px; position: relative;
-        }
+        .menu-card { flex: 1; min-width: 280px; max-width: 380px; height: 160px; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 24px; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; border: 2px solid rgba(255,255,255,0.1); background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); gap: 10px; position: relative; }
         .menu-card:active { transform: scale(0.96); }
         .menu-card i { font-size: 32px; margin-bottom: 5px; }
-
         .menu-card.chat { color: #ffb703; border-color: rgba(255, 183, 3, 0.3); box-shadow: 0 0 20px rgba(255, 183, 3, 0.05); }
         .menu-card.chat:hover { transform: translateY(-8px) scale(1.02); border-color: #ffb703; box-shadow: 0 0 40px rgba(255, 183, 3, 0.4); background: rgba(255, 183, 3, 0.05); }
-
         .menu-card.game { color: #f97316; border-color: rgba(249, 115, 22, 0.3); box-shadow: 0 0 20px rgba(249, 115, 22, 0.05); }
         .menu-card.game:hover { transform: translateY(-8px) scale(1.02); border-color: #f97316; box-shadow: 0 0 40px rgba(249, 115, 22, 0.4); background: rgba(249, 115, 22, 0.05); }
 
-        /* --- TRANG NHÓM CHAT (MỚI) --- */
-        #pageChat {
-            display: none;
-            width: 100%;
-            max-width: 800px;
-            padding: 20px;
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            background: rgba(255,255,255,0.02);
-            padding: 12px 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+        /* --- Trang con --- */
+        #pageChat { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
+        #pageRoom { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s; }
+        .chat-header, .room-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(255,255,255,0.02); padding: 12px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 10px; }
         .chat-header h2 { font-family: 'Orbitron', sans-serif; color: #ffb703; font-size: 22px; text-shadow: 0 0 20px rgba(255, 183, 3, 0.2); display: flex; align-items: center; gap: 10px; }
-        .chat-back-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #b0b8d1;
-            padding: 10px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-            font-size: 15px;
-        }
-        .chat-back-btn:hover { background: #ffb703; color: #07080e; border-color: #ffb703; transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 183, 3, 0.4); }
-        .chat-back-btn:active { transform: scale(0.96); }
-
-        .chat-container {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 24px;
-            padding: 25px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .chat-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-            color: #55607a;
-            text-align: center;
-            gap: 15px;
-            padding: 30px 0;
-        }
-        .chat-placeholder i { font-size: 50px; color: rgba(255, 183, 3, 0.2); }
-        .chat-placeholder h3 { color: #fff; font-family: 'Orbitron', sans-serif; font-size: 18px; }
-        
-        .chat-demo-box {
-            margin-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 20px;
-        }
-        .chat-demo-box textarea {
-            width: 100%;
-            height: 60px;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.03);
-            color: #fff;
-            padding: 15px;
-            font-size: 15px;
-            outline: none;
-            resize: none;
-            font-family: 'Roboto', sans-serif;
-        }
-        .chat-demo-box textarea:focus { border-color: #ffb703; box-shadow: 0 0 20px rgba(255, 183, 3, 0.1); }
-
-        /* --- TRANG PHÒNG GAME --- */
-        #pageRoom { display: none; width: 100%; max-width: 800px; padding: 20px; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .room-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: rgba(255,255,255,0.02); padding: 12px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 10px; }
         .room-header h2 { font-family: 'Orbitron', sans-serif; color: #f97316; font-size: 22px; text-shadow: 0 0 20px rgba(249, 115, 22, 0.2); display: flex; align-items: center; gap: 10px; }
-        .room-back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #b0b8d1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 15px; }
-        .room-back-btn:hover { background: #f97316; color: #07080e; border-color: #f97316; transform: scale(1.05); box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
-        .room-back-btn:active { transform: scale(0.96); }
+        .chat-back-btn, .room-back-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #b0b8d1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 15px; }
+        .chat-back-btn:hover { background: #ffb703; color: #07080e; border-color: #ffb703; transform: scale(1.05); }
+        .room-back-btn:hover { background: #f97316; color: #07080e; border-color: #f97316; transform: scale(1.05); }
 
-        .room-container { background: rgba(255, 255, 255, 0.03); border-radius: 24px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .chat-container, .room-container { background: rgba(255, 255, 255, 0.03); border-radius: 24px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .chat-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; color: #55607a; text-align: center; gap: 15px; padding: 30px 0; }
+        .chat-placeholder i { font-size: 50px; color: rgba(255, 183, 3, 0.2); }
+        .chat-demo-box { margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+        .chat-demo-box textarea { width: 100%; height: 60px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; padding: 15px; font-size: 15px; outline: none; resize: none; font-family: 'Roboto', sans-serif; }
+        .chat-demo-box textarea:focus { border-color: #ffb703; }
+
         .room-form { display: flex; flex-direction: column; gap: 15px; }
         .room-form input { width: 100%; padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 16px; outline: none; transition: 0.3s; }
-        .room-form input:focus { border-color: #f97316; background: rgba(249, 115, 22, 0.05); box-shadow: 0 0 25px rgba(249, 115, 22, 0.1); }
-        .room-form input::placeholder { color: #55607a; }
-        .room-form input:focus-visible { outline: none; }
+        .room-form input:focus { border-color: #f97316; background: rgba(249, 115, 22, 0.05); }
         .room-form button { width: 100%; padding: 16px; border-radius: 16px; border: none; background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; font-weight: 900; font-size: 17px; cursor: pointer; transition: 0.3s; letter-spacing: 1px; box-shadow: 0 0 20px rgba(249, 115, 22, 0.2); }
         .room-form button:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(249, 115, 22, 0.5); }
         .room-form button:active { transform: scale(0.98); }
 
-        #roomHistory { display: none; margin-top: 25px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 15px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; max-height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+        #roomHistory { display: none; margin-top: 25px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 15px; animation: popIn 0.5s; position: relative; max-height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
         #roomHistory::-webkit-scrollbar { width: 6px; }
         #roomHistory::-webkit-scrollbar-track { background: transparent; }
         #roomHistory::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
-        #roomHistory::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
         #roomHistory.active-history { border-color: rgba(34, 197, 94, 0.3); box-shadow: 0 0 20px rgba(34, 197, 94, 0.05); }
         #roomHistory .history-title { font-size: 14px; color: #8892b0; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
         .history-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; margin-bottom: 6px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border-left: 4px solid #f97316; font-size: 14px; }
         .history-item:last-child { margin-bottom: 0; }
-        .history-item .h-name { font-weight: bold; color: #fff; display: flex; align-items: center; gap: 8px; word-break: break-all;}
+        .history-item .h-name { font-weight: bold; color: #fff; display: flex; align-items: center; gap: 8px; }
         .history-item .h-code { color: #f97316; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 15px; }
         .history-item:nth-child(even) { border-left-color: #3b82f6; }
         .history-item:nth-child(even) .h-code { color: #3b82f6; }
 
+        /* --- Login Popup --- */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease; z-index: 999; }
+        .overlay.active { visibility: visible; opacity: 1; }
+        .login-popup { background: #1b1f33; padding: 40px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; position: relative; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: scale(0.8) translateY(30px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .overlay.active .login-popup { transform: scale(1) translateY(0); }
+        .close-popup { position: absolute; top: 15px; right: 20px; font-size: 28px; color: #8892b0; cursor: pointer; transition: 0.3s; background: none; border: none; }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-icon { font-size: 50px; color: #ffcc00; margin-bottom: 15px; text-shadow: 0 0 20px rgba(255, 204, 0, 0.3); }
+        .login-popup h2 { font-family: 'Orbitron', sans-serif; font-size: 22px; margin-bottom: 10px; }
+        .login-popup p { color: #8892b0; font-size: 14px; margin-bottom: 25px; }
+        .social-btn { border: none; width: 100%; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
+        .social-btn:hover { transform: scale(1.03); }
+        .social-btn.google { background: #ffffff; color: #333; box-shadow: 0 4px 15px rgba(255,255,255,0.1); }
+        .social-btn.google:hover { box-shadow: 0 8px 25px rgba(255,255,255,0.3); }
+        .social-btn.facebook { background: #1877f2; color: #fff; }
+        .social-btn.facebook:hover { box-shadow: 0 0 20px rgba(24, 119, 242, 0.4); }
+        .social-btn:disabled { opacity: 0.7; transform: scale(1); cursor: not-allowed; }
+        .or-divider { color: #4a5278; margin: 15px 0; font-size: 14px; }
+        
+        .email-toggle { color: #ffb703; cursor: pointer; font-size: 14px; transition: 0.3s; text-decoration: underline; }
+        .email-toggle:hover { color: #fff; }
+
+        .email-login-form, .email-register-form { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
+        .email-input { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
+        .email-input:focus { border-color: #ffb703; background: rgba(255, 183, 3, 0.05); }
+        .email-submit-btn { width: 100%; padding: 12px; border-radius: 12px; border: none; background: linear-gradient(135deg, #ff9e5e, #ffb703); color: #0d0f1a; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; }
+        .email-submit-btn:hover { transform: scale(1.02); }
+
+        /* --- Responsive --- */
         @media (max-width: 900px) {
-            .nav-links { display: none; }
+            .nav-links .hide-mobile { display: none; }
             .hamburger { display: block; }
             .logo { font-size: 15px; }
             .logo i { font-size: 22px; }
@@ -342,36 +171,24 @@
             #landingHero { padding: 40px 20px; border-radius: 24px; }
             .hero-title { font-size: 28px; }
             .hero-desc { font-size: 14px; margin-bottom: 25px; }
-            .hero-btn { padding: 14px 30px; font-size: 14px; gap: 10px; }
             .menu-card { min-width: 100%; height: 140px; font-size: 20px; }
             .menu-card i { font-size: 28px; }
-            #pageChat { padding: 10px; }
-            #pageRoom { padding: 10px; }
-            .chat-header { flex-direction: row; padding: 10px 15px; }
-            .chat-header h2 { font-size: 18px; }
-            .chat-back-btn { padding: 8px 16px; font-size: 13px; }
-            .room-header { flex-direction: row; padding: 10px 15px; }
-            .room-header h2 { font-size: 18px; }
-            .room-back-btn { padding: 8px 16px; font-size: 13px; }
-            .chat-container { padding: 20px 15px; }
-            .room-container { padding: 20px 15px; }
+            #pageChat, #pageRoom { padding: 10px; }
+            .chat-header, .room-header { padding: 10px 15px; }
+            .chat-header h2, .room-header h2 { font-size: 18px; }
+            .chat-back-btn, .room-back-btn { padding: 8px 16px; font-size: 13px; }
+            .chat-container, .room-container { padding: 20px 15px; }
             .room-form input { padding: 14px; font-size: 15px; }
             .room-form button { padding: 14px; font-size: 15px; }
             #roomHistory { max-height: 200px; }
-            .history-item { padding: 10px 12px; font-size: 13px; }
-            .history-item .h-code { font-size: 14px; }
+            .login-popup { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HIỆU ỨNG NỀN -->
-    <div class="bg-particles">
-        <div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div>
-    </div>
+    <!-- Effects -->
+    <div class="bg-particles"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
     <div class="floating-ducks">
         <div class="duck"><i class="fas fa-kiwi-bird"></i></div>
         <div class="duck"><i class="fas fa-crow"></i></div>
@@ -380,186 +197,333 @@
         <div class="duck"><i class="fas fa-crow"></i></div>
     </div>
 
-    <!-- TRANG CHỦ -->
+    <!-- HOME WRAPPER -->
     <div class="banner-wrapper" id="homeWrapper">
         <header>
-            <div class="logo">
-                <i class="fas fa-ghost"></i> <span>GOOSE GOOSE DUCK</span>
-            </div>
+            <div class="logo"><i class="fas fa-ghost"></i> <span>GOOSE GOOSE DUCK</span></div>
             <div class="nav-links">
                 <a href="#" onclick="goHome()"><i class="fas fa-home"></i> Trang Chủ</a>
-                <a href="#"><i class="fas fa-user-friends"></i> Thành Viên</a>
+                <a href="#" class="hide-mobile"><i class="fas fa-user-friends"></i> Thành Viên</a>
+                <!-- Nút đăng nhập / Tên người dùng -->
+                <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
             </div>
-            <button class="hamburger" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
             <div class="mobile-nav-links" id="mobileMenu">
                 <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
                 <a href="#" onclick="toggleMobileMenu();"><i class="fas fa-user-friends"></i> Thành Viên</a>
+                <a href="#" onclick="toggleMobileMenu(); openLoginPopup();"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
             </div>
         </header>
 
+        <!-- Landing Hero -->
         <section id="landingHero">
             <h1 class="hero-title"><span>Goose Goose Duck</span></h1>
-            <p class="hero-desc">Cùng nhau giải trí • Kết bạn • Tận hưởng những trận game vui nhộn!</p>
-            <button class="hero-btn" onclick="goToMainMenu()">
-                <i class="fas fa-rocket"></i> Tham Gia Ngay
-            </button>
+            <p class="hero-desc">Đăng nhập để cùng nhau giải trí • Kết bạn • Tận hưởng game!</p>
         </section>
 
+        <!-- Main Menu (After login) -->
         <div id="mainMenu">
-            <!-- Đã thay alert bằng hàm openChatPage() -->
-            <div class="menu-card chat" onclick="openChatPage()">
-                <i class="fas fa-comments"></i> Nhóm Chat
-            </div>
-            <div class="menu-card game" onclick="openRoomPage()">
-                <i class="fas fa-gamepad"></i> Phòng Game
-            </div>
+            <div class="menu-card chat" onclick="openChatPage()"><i class="fas fa-comments"></i> Nhóm Chat</div>
+            <div class="menu-card game" onclick="openRoomPage()"><i class="fas fa-gamepad"></i> Phòng Game</div>
         </div>
     </div>
 
-    <!-- ==================== TRANG NHÓM CHAT (MỚI) ==================== -->
+    <!-- Page Chat -->
     <div id="pageChat">
         <div class="chat-header">
             <h2><i class="fas fa-comments" style="color: #ffb703;"></i> Nhóm Chat</h2>
-            <button class="chat-back-btn" onclick="closeChatPage()">
-                <i class="fas fa-arrow-left"></i> Quay lại
-            </button>
+            <button class="chat-back-btn" onclick="closeChatPage()"><i class="fas fa-arrow-left"></i> Quay lại</button>
         </div>
-
         <div class="chat-container">
             <div class="chat-placeholder">
                 <i class="fas fa-ghost"></i>
                 <h3>Chào mừng đến với Nhóm Chat!</h3>
-                <p style="color: #55607a; font-size: 14px; max-width: 300px;">
-                    Đây là khung chat dành cho nhóm Goose Goose Duck.
-                    <br><br>
-                    <em>(Bạn có thể dán mã nhúng Elfsight hoặc widget chat vào đây để thay thế phần này)</em>
-                </p>
+                <p style="color: #55607a; font-size: 14px; max-width: 300px;">Đây là khung chat dành cho nhóm Goose Goose Duck.</p>
             </div>
-            
-            <!-- Demo khung nhập tin nhắn (để bạn thấy giao diện đã hoạt động) -->
-            <div class="chat-demo-box">
-                <textarea placeholder="Nhập tin nhắn để test giao diện chat..."></textarea>
-            </div>
+            <div class="chat-demo-box"><textarea placeholder="Nhập tin nhắn để test giao diện chat..."></textarea></div>
         </div>
     </div>
 
-    <!-- ==================== TRANG PHÒNG GAME ==================== -->
+    <!-- Page Room -->
     <div id="pageRoom">
         <div class="room-header">
             <h2><i class="fas fa-gamepad"></i> Phòng Game</h2>
-            <button class="room-back-btn" onclick="closeRoomPage()">
-                <i class="fas fa-arrow-left"></i> Quay lại
-            </button>
+            <button class="room-back-btn" onclick="closeRoomPage()"><i class="fas fa-arrow-left"></i> Quay lại</button>
         </div>
-
         <div class="room-container">
             <div class="room-form">
                 <input type="text" id="roomCode" placeholder="Nhập Mã Phòng (VD: GGD123)..." maxlength="10">
                 <button onclick="joinRoom()"><i class="fas fa-rocket"></i> Nhập</button>
             </div>
-
             <div id="roomHistory">
-                <div class="history-title">
-                    <i class="fas fa-clock-rotate-left" style="color:#f97316"></i> Lịch sử nhập phòng
-                </div>
+                <div class="history-title"><i class="fas fa-clock-rotate-left" style="color:#f97316"></i> Lịch sử nhập phòng</div>
                 <div id="historyList"></div>
             </div>
         </div>
     </div>
 
-    <script>
-        // --- Dữ liệu & Lưu trữ ---
-        let historyData = JSON.parse(localStorage.getItem('gooseRoomHistory')) || [];
+    <!-- LOGIN POPUP -->
+    <div class="overlay" id="loginOverlay">
+        <div class="login-popup">
+            <button class="close-popup" onclick="closeLoginPopup()"><i class="fas fa-times"></i></button>
+            <div class="popup-icon"><i class="fas fa-ghost"></i></div>
+            <h2 id="popupTitle">Đăng nhập</h2>
+            <p id="popupDesc">Tham gia cộng đồng Goose Goose Duck ngay!</p>
+            
+            <!-- Social Buttons -->
+            <button class="social-btn google" id="googleBtn" onclick="loginGoogle()"><i class="fab fa-google" style="color:#ea4335; font-size:20px;"></i> Đăng nhập với Google</button>
+            <button class="social-btn facebook" id="fbBtn" onclick="loginFacebook()"><i class="fab fa-facebook-f"></i> Đăng nhập với Facebook</button>
+            
+            <div class="or-divider">Hoặc</div>
 
-        function saveData() { localStorage.setItem('gooseRoomHistory', JSON.stringify(historyData)); }
+            <!-- Email Login Form -->
+            <div class="email-login-form" id="emailLoginForm">
+                <input type="email" class="email-input" id="loginEmail" placeholder="Email của bạn...">
+                <input type="password" class="email-input" id="loginPass" placeholder="Mật khẩu...">
+                <button class="email-submit-btn" onclick="loginEmail()">Đăng nhập với Email</button>
+            </div>
 
-        function renderHistory() {
-            const listContainer = document.getElementById('historyList');
-            const historyBox = document.getElementById('roomHistory');
-            listContainer.innerHTML = '';
-            if (historyData.length === 0) {
-                listContainer.innerHTML = `<div style="color:#4a5278; text-align:center; padding: 15px; font-size:14px;">Chưa có lịch sử nhập phòng nào.</div>`;
-                historyBox.style.display = 'none';
+            <!-- Email Register Form -->
+            <div class="email-register-form" id="emailRegisterForm">
+                <input type="email" class="email-input" id="regEmail" placeholder="Email của bạn...">
+                <input type="password" class="email-input" id="regPass" placeholder="Mật khẩu (6 ký tự trở lên)...">
+                <button class="email-submit-btn" onclick="registerEmail()">Đăng ký tài khoản</button>
+            </div>
+
+            <!-- Toggle Links -->
+            <div style="margin-top:15px; font-size:14px; color:#8892b0;">
+                <span id="toggleText">Chưa có tài khoản? </span>
+                <a href="#" class="email-toggle" id="toggleLink" onclick="toggleAuthForm(event)">Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FIREBASE & LOGIC ==================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+        // --- CẤU HÌNH FIREBASE CỦA BẠN ---
+        const firebaseConfig = {
+          apiKey: "AIzaSyA4bKk3jqWn-SkVoF3r2dcDl8C-yOka35U",
+          authDomain: "devinsf-8f3b3.firebaseapp.com",
+          projectId: "devinsf-8f3b3",
+          storageBucket: "devinsf-8f3b3.firebasestorage.app",
+          messagingSenderId: "551925187830",
+          appId: "1:551925187830:web:7b8209655c707dcc8258d7",
+          measurementId: "G-EG7S4J1LV0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // --- Hàm cập nhật giao diện khi đã đăng nhập ---
+        function updateUI(user) {
+            document.getElementById('landingHero').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'flex';
+            const btn = document.getElementById('authBtn');
+            btn.innerHTML = `<i class="fas fa-user-circle"></i> ${user.displayName || user.email}`;
+            btn.onclick = function(e) { e.preventDefault(); logoutUser(); };
+            
+            // Cập nhật mobile menu
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.innerHTML = `
+                <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
+                <a href="#" onclick="toggleMobileMenu(); logoutUser();"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            `;
+        }
+
+        // --- Hàm chuyển sang Menu dành cho khách (chưa đăng nhập) ---
+        function updateGuestUI() {
+            document.getElementById('landingHero').style.display = 'block';
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('pageChat').style.display = 'none';
+            document.getElementById('pageRoom').style.display = 'none';
+            const btn = document.getElementById('authBtn');
+            btn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Đăng nhập`;
+            btn.onclick = function(e) { e.preventDefault(); openLoginPopup(); };
+
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.innerHTML = `
+                <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
+                <a href="#" onclick="toggleMobileMenu(); openLoginPopup();"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+            `;
+        }
+
+        // --- Hàm Đăng nhập Google ---
+        window.loginGoogle = async function() {
+            const btn = document.getElementById('googleBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
+            try {
+                const provider = new GoogleAuthProvider();
+                await signInWithPopup(auth, provider);
+                closeLoginPopup();
+            } catch (error) {
+                alert("Lỗi đăng nhập Google: " + error.message);
+            } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-google" style="color:#ea4335; font-size:20px;"></i> Đăng nhập với Google'; }
+        };
+
+        // --- Hàm Đăng nhập Facebook ---
+        window.loginFacebook = async function() {
+            const btn = document.getElementById('fbBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
+            try {
+                const provider = new FacebookAuthProvider();
+                await signInWithPopup(auth, provider);
+                closeLoginPopup();
+            } catch (error) {
+                // Lưu ý: Nếu chưa tạo App Facebook trên Developer, nó sẽ báo lỗi, bạn vẫn có thể dùng Google.
+                alert("Lỗi đăng nhập Facebook: " + error.message);
+            } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-facebook-f"></i> Đăng nhập với Facebook'; }
+        };
+
+        // --- Hàm Đăng nhập / Đăng ký Email ---
+        window.loginEmail = async function() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+            if(!email || !pass) { alert('Vui lòng nhập email và mật khẩu!'); return; }
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                closeLoginPopup();
+            } catch (error) {
+                alert("Đăng nhập email thất bại: " + error.message);
+            }
+        };
+
+        window.registerEmail = async function() {
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+            if(!email || !pass) { alert('Vui lòng nhập email và mật khẩu!'); return; }
+            if(pass.length < 6) { alert('Mật khẩu phải có ít nhất 6 ký tự!'); return; }
+            try {
+                await createUserWithEmailAndPassword(auth, email, pass);
+                closeLoginPopup();
+            } catch (error) {
+                alert("Đăng ký thất bại: " + error.message);
+            }
+        };
+
+        // --- Đăng xuất ---
+        window.logoutUser = async function() {
+            if(confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+                await signOut(auth);
+                updateGuestUI();
+            }
+        };
+
+        // --- Theo dõi trạng thái đăng nhập (Chống mất khi F5) ---
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Đã đăng nhập, vào giao diện chính
+                updateUI(user);
             } else {
-                historyBox.style.display = 'block';
-                historyBox.classList.add('active-history'); 
+                // Chưa đăng nhập hoặc đã đăng xuất
+                updateGuestUI();
+            }
+        });
+
+    </script>
+
+    <!-- POPUP LOGIC & PAGE LOGIC -->
+    <script>
+        // --- Logic Popup đăng nhập ---
+        function openLoginPopup() {
+            document.getElementById('loginOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLoginPopup() {
+            document.getElementById('loginOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        // Đóng popup khi bấm ra ngoài
+        document.getElementById('loginOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeLoginPopup();
+        });
+
+        // --- Chuyển đổi giữa Đăng nhập và Đăng ký bằng Email ---
+        let isLogin = true;
+        window.toggleAuthForm = function(e) {
+            e.preventDefault();
+            isLogin = !isLogin;
+            const loginForm = document.getElementById('emailLoginForm');
+            const regForm = document.getElementById('emailRegisterForm');
+            const title = document.getElementById('popupTitle');
+            const desc = document.getElementById('popupDesc');
+            const toggleText = document.getElementById('toggleText');
+            const toggleLink = document.getElementById('toggleLink');
+
+            if(isLogin) {
+                loginForm.style.display = 'flex';
+                regForm.style.display = 'none';
+                title.innerText = 'Đăng nhập';
+                desc.innerText = 'Chào mừng bạn quay trở lại!';
+                toggleText.innerText = 'Chưa có tài khoản? ';
+                toggleLink.innerText = 'Đăng ký ngay';
+            } else {
+                loginForm.style.display = 'none';
+                regForm.style.display = 'flex';
+                title.innerText = 'Đăng ký tài khoản';
+                desc.innerText = 'Tạo tài khoản để tham gia nhóm!';
+                toggleText.innerText = 'Đã có tài khoản? ';
+                toggleLink.innerText = 'Đăng nhập ngay';
+            }
+        };
+        // Mặc định hiện form login
+        document.getElementById('emailLoginForm').style.display = 'flex';
+
+        // --- Logic Quản lý Menu Mobile ---
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        // --- Logic Lịch sử Phòng Game ---
+        let historyData = JSON.parse(localStorage.getItem('gooseRoomHistory')) || [];
+        function saveData() { localStorage.setItem('gooseRoomHistory', JSON.stringify(historyData)); }
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            const box = document.getElementById('roomHistory');
+            list.innerHTML = '';
+            if (historyData.length === 0) {
+                list.innerHTML = `<div style="color:#4a5278; text-align:center; padding: 15px; font-size:14px;">Chưa có lịch sử nhập phòng nào.</div>`;
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'block';
+                box.classList.add('active-history'); 
                 historyData.slice().reverse().forEach(item => {
                     const div = document.createElement('div');
                     div.className = 'history-item';
                     div.innerHTML = `<span class="h-name"><i class="fas fa-user-circle"></i> ${item.name}</span><span class="h-code">${item.code}</span>`;
-                    listContainer.appendChild(div);
+                    list.appendChild(div);
                 });
             }
         }
-
         function addHistoryItem(name, code) {
-            historyData.push({ name: name, code: code });
-            saveData();
-            renderHistory();
+            historyData.push({ name: name, code: code }); saveData(); renderHistory();
         }
 
-        // --- Quản lý menu Mobile ---
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('open');
-        }
-
-        // --- Quản lý trạng thái trang ---
-        function setActivePage(pageName) { localStorage.setItem('gooseActivePage', pageName); }
-        function getActivePage() { return localStorage.getItem('gooseActivePage'); }
-
-        // --- Các hàm chuyển trang ---
+        // --- Logic Điều hướng Trang ---
         function goHome() {
             document.getElementById('pageChat').style.display = 'none';
             document.getElementById('pageRoom').style.display = 'none';
             document.getElementById('homeWrapper').style.display = 'flex';
             document.getElementById('landingHero').style.display = 'block';
-            document.getElementById('landingHero').style.opacity = '1';
-            document.getElementById('landingHero').style.transform = 'scale(1)';
             document.getElementById('mainMenu').style.display = 'none';
-            setActivePage('home');
         }
-
-        function goToMainMenu() {
-            const hero = document.getElementById('landingHero');
-            hero.style.opacity = '0';
-            hero.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                hero.style.display = 'none';
-                document.getElementById('mainMenu').style.display = 'flex';
-                setActivePage('menu');
-            }, 400);
-        }
-
-        // --- Hàm mở/đóng Nhóm Chat ---
         function openChatPage() {
             document.getElementById('homeWrapper').style.display = 'none';
             document.getElementById('pageChat').style.display = 'block';
-            setActivePage('chat');
         }
-
         function closeChatPage() {
             document.getElementById('pageChat').style.display = 'none';
             document.getElementById('homeWrapper').style.display = 'flex';
-            setActivePage('home');
         }
-
-        // --- Hàm mở/đóng Phòng Game ---
         function openRoomPage() {
             document.getElementById('homeWrapper').style.display = 'none';
             document.getElementById('pageRoom').style.display = 'block';
             renderHistory();
-            setActivePage('room');
         }
-
         function closeRoomPage() {
             document.getElementById('pageRoom').style.display = 'none';
             document.getElementById('homeWrapper').style.display = 'flex';
-            setActivePage('home');
         }
-
         function joinRoom() {
             const code = document.getElementById('roomCode').value.trim();
             if (code === '') { alert('Vui lòng nhập Mã Phòng!'); return; }
@@ -567,25 +531,6 @@
             addHistoryItem(`Người chơi ${randomNum}`, code);
             document.getElementById('roomCode').value = '';
         }
-
-        // --- Tự động khôi phục trang sau khi F5 ---
-        window.onload = function() {
-            const lastPage = getActivePage();
-            if (lastPage === 'menu') {
-                document.getElementById('landingHero').style.display = 'none';
-                document.getElementById('mainMenu').style.display = 'flex';
-            } else if (lastPage === 'chat') {
-                document.getElementById('homeWrapper').style.display = 'none';
-                document.getElementById('pageChat').style.display = 'block';
-            } else if (lastPage === 'room') {
-                document.getElementById('homeWrapper').style.display = 'none';
-                document.getElementById('pageRoom').style.display = 'block';
-                renderHistory();
-            } else {
-                document.getElementById('landingHero').style.display = 'block';
-                document.getElementById('mainMenu').style.display = 'none';
-            }
-        };
     </script>
 
 </body>

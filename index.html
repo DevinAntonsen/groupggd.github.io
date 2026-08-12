@@ -70,13 +70,57 @@
         .mobile-nav-links a:last-child { border-bottom: none; }
         .mobile-nav-links a:hover { color: #ffb703; background: rgba(255,255,255,0.03); }
 
-        /* --- Nút tài khoản --- */
+        /* --- Nút tài khoản (Đã sửa lỗi mất nút khi di chuột) --- */
         .user-menu-wrapper { position: relative; display: inline-block; }
         .user-btn { color: #ffb703; font-weight: 700; font-size: 15px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 20px; transition: 0.3s; }
         .user-btn:hover { background: rgba(255, 183, 3, 0.1); }
-        .user-dropdown { display: none; position: absolute; top: 45px; right: 0; background: rgba(13, 15, 26, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 8px 0; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 20; animation: popIn 0.2s ease; }
-        .user-menu-wrapper:hover .user-dropdown, .user-menu-wrapper.active .user-dropdown { display: block; }
-        .user-dropdown button { width: 100%; background: none; border: none; color: #fff; padding: 10px 20px; font-size: 14px; text-align: left; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
+        
+        .user-dropdown { 
+            display: none; 
+            position: absolute; 
+            top: 100%; /* Nằm ngay dưới nút */
+            right: 0; 
+            margin-top: 12px; /* 🔥 Tăng khoảng cách để chuột không bị lọt vào khoảng trống */
+            background: rgba(13, 15, 26, 0.95); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 16px; 
+            padding: 8px 0; 
+            min-width: 140px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
+            z-index: 20; 
+            animation: popIn 0.2s ease;
+        }
+        /* 🔥 Quan trọng: Tạo một vùng đệm ảo để nối liền giữa tên và hộp menu */
+        .user-dropdown::before {
+            content: "";
+            position: absolute;
+            top: -12px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: transparent;
+        }
+
+        /* Hiện menu khi rê chuột vào tên hoặc bấm vào tên */
+        .user-menu-wrapper:hover .user-dropdown,
+        .user-menu-wrapper.active .user-dropdown {
+            display: block;
+        }
+        .user-dropdown button { 
+            width: 100%; 
+            background: none; 
+            border: none; 
+            color: #fff; 
+            padding: 10px 20px; 
+            font-size: 14px; 
+            text-align: left; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
         .user-dropdown button:hover { background: rgba(255,255,255,0.05); color: #f97316; }
 
         /* --- Landing Hero --- */
@@ -216,9 +260,9 @@
                 <!-- Khi chưa đăng nhập -->
                 <a href="#" id="authBtn" onclick="openLoginPopup()" style="color: #ffb703; display: flex;"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 
-                <!-- Khi đã đăng nhập -->
+                <!-- Khi đã đăng nhập (Đã sửa lỗi mất nút khi di chuột) -->
                 <div class="user-menu-wrapper" id="userMenuWrapper" style="display: none;">
-                    <button class="user-btn">
+                    <button class="user-btn" onclick="toggleUserDropdown()">
                         <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Tài khoản</span>
                         <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
                     </button>
@@ -323,7 +367,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
         import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
-        // --- CẤU HÌNH FIREBASE CỦA BẠN ---
         const firebaseConfig = {
           apiKey: "AIzaSyA4bKk3jqWn-SkVoF3r2dcDl8C-yOka35U",
           authDomain: "devinsf-8f3b3.firebaseapp.com",
@@ -339,21 +382,17 @@
         const googleProvider = new GoogleAuthProvider();
         const facebookProvider = new FacebookAuthProvider();
 
-        // --- QUAN TRỌNG NHẤT: Thêm dòng này để bắt buộc chọn tài khoản mỗi lần đăng nhập ---
+        // QUAN TRỌNG: Bắt buộc chọn tài khoản mỗi lần đăng nhập
         googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-        // --- Hàm cập nhật giao diện khi đã đăng nhập ---
         function updateUI(user) {
             document.getElementById('landingHero').style.display = 'none';
             document.getElementById('mainMenu').style.display = 'flex';
-            
-            // Ẩn nút "Đăng nhập", Hiện tên + menu đăng xuất
             document.getElementById('authBtn').style.display = 'none';
             const userWrapper = document.getElementById('userMenuWrapper');
             userWrapper.style.display = 'inline-block';
             document.getElementById('userNameDisplay').innerText = user.displayName || user.email;
             
-            // Cập nhật mobile menu
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.innerHTML = `
                 <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
@@ -361,17 +400,13 @@
             `;
         }
 
-        // --- Hàm chuyển sang Menu dành cho khách (chưa đăng nhập) ---
         function updateGuestUI() {
             document.getElementById('landingHero').style.display = 'block';
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('pageChat').style.display = 'none';
             document.getElementById('pageRoom').style.display = 'none';
-            
-            // Hiện nút đăng nhập, ẩn menu đăng xuất
             document.getElementById('authBtn').style.display = 'flex';
             document.getElementById('userMenuWrapper').style.display = 'none';
-
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.innerHTML = `
                 <a href="#" onclick="goHome(); toggleMobileMenu();"><i class="fas fa-home"></i> Trang Chủ</a>
@@ -379,11 +414,9 @@
             `;
         }
 
-        // --- Hàm Đăng nhập Google ---
         window.loginGoogle = async function() {
             const btn = document.getElementById('googleBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
             try {
-                // Sử dụng googleProvider đã cấu hình ở trên
                 await signInWithPopup(auth, googleProvider);
                 closeLoginPopup();
             } catch (error) {
@@ -391,7 +424,6 @@
             } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-google" style="color:#ea4335; font-size:20px;"></i> Đăng nhập với Google'; }
         };
 
-        // --- Hàm Đăng nhập Facebook ---
         window.loginFacebook = async function() {
             const btn = document.getElementById('fbBtn'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang xử lý...';
             try {
@@ -402,7 +434,6 @@
             } finally { btn.disabled = false; btn.innerHTML = '<i class="fab fa-facebook-f"></i> Đăng nhập với Facebook'; }
         };
 
-        // --- Hàm Đăng nhập / Đăng ký Email ---
         window.loginEmail = async function() {
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPass').value.trim();
@@ -428,7 +459,6 @@
             }
         };
 
-        // --- Đăng xuất ---
         window.logoutUser = async function() {
             if(confirm('Bạn có chắc chắn muốn đăng xuất?')) {
                 await signOut(auth);
@@ -436,7 +466,10 @@
             }
         };
 
-        // --- Theo dõi trạng thái đăng nhập (Chống mất khi F5) ---
+        window.toggleUserDropdown = function() {
+            document.getElementById('userDropdown').classList.toggle('open');
+        };
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 updateUI(user);
@@ -449,7 +482,6 @@
 
     <!-- POPUP LOGIC & PAGE LOGIC -->
     <script>
-        // --- Logic Popup đăng nhập ---
         function openLoginPopup() {
             document.getElementById('loginOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -462,7 +494,6 @@
             if (e.target === this) closeLoginPopup();
         });
 
-        // --- Chuyển đổi giữa Đăng nhập và Đăng ký bằng Email ---
         let isLogin = true;
         window.toggleAuthForm = function(e) {
             e.preventDefault();
@@ -492,12 +523,10 @@
         };
         document.getElementById('emailLoginForm').style.display = 'flex';
 
-        // --- Logic Quản lý Menu Mobile ---
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
         }
 
-        // --- Logic Lịch sử Phòng Game ---
         let historyData = JSON.parse(localStorage.getItem('gooseRoomHistory')) || [];
         function saveData() { localStorage.setItem('gooseRoomHistory', JSON.stringify(historyData)); }
         function renderHistory() {
@@ -522,7 +551,6 @@
             historyData.push({ name: name, code: code }); saveData(); renderHistory();
         }
 
-        // --- Logic Điều hướng Trang ---
         function goHome() {
             document.getElementById('pageChat').style.display = 'none';
             document.getElementById('pageRoom').style.display = 'none';
